@@ -39,7 +39,7 @@ export default {
     <div class="slider flex flex-nowrap overflow-scroll whitespace-nowrap gap-4">
       <div 
        class="px-3 bg-gray-200 dark:bg-[#3F3F3F] hover:bg-gray-300 dark:hover:!bg-gray-400 rounded-md py-1 transition-all ease-in-out " v-for="(category, index) in categories" :key="index">
-        <p class="font-medium text-sm">{{ category }}</p>
+        <p class="font-medium text-sm mb-1">{{ category }}</p>
       </div>
     </div>
   </template>

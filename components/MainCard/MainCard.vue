@@ -13,7 +13,7 @@ const { index } = props;
     <div>
         <NuxtLink :to="'/video/' + index">
             <div class="rounded-xl h-44 overflow-hidden">
-                <NuxtImg src="https://images.unsplash.com/photo-1564648351416-3eec9f3e85de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmlsZGVyfGVufDB8fDB8fHww" class="w-full h-full rounded-xl object-cover hover:scale-110 transition-all ease-in-out" />
+                <NuxtImg src="https://source.unsplash.com/featured" class="w-full h-full rounded-xl object-cover hover:scale-110 transition-all ease-in-out" />
             </div>
             </NuxtLink>
             
