@@ -5,7 +5,7 @@
         </div>
 
         <div class="flex flex-col pl-2 lg:w-1/2">
-            <p class="font-medium lg:pb-1 line-clamp-2">Roman Jobs SUCKED ddefdefasfsrfrsfsrfsrfsrfwefrfresffrf</p>
+            <p class="font-medium lg:pb-1 line-clamp-2 ">Roman Jobs SUCKED ddefdefasfsrfrsfsrfsrfsrfwefrfresffrf</p>
             <p class="text-sm text-gray-300 lg:pb-1">Necessary Information</p>
             <p class="text-xs text-gray-300">100K views  1 month ago</p>
         </div>
