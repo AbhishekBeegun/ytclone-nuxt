@@ -685,6 +685,13 @@ const formatNumber = (number) => {
   }
   return number; 
 };
+
+const toast = useToast()
+
+const SubscribeBtn = () => {
+  toast.add({ title: 'Subscribed' });
+};
+
 </script>
 
 <template>
@@ -715,7 +722,7 @@ const formatNumber = (number) => {
             </NuxtLink>
 
             <div class="ml-3">
-              <button class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-purple-600 to-red-500 group-hover:from-purple-600 group-hover:to-red-500 hover:text-white dark:text-white focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800">
+              <button @click="SubscribeBtn" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-purple-600 to-red-500 group-hover:from-purple-600 group-hover:to-red-500 hover:text-white dark:text-white focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800">
               <span class="relative rounded-full px-5 py-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 group-hover:bg-opacity-0">
                 Subscribe
               </span>

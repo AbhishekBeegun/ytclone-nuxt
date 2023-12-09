@@ -93,6 +93,7 @@ const items = [
       }
     }
 ];
+
 </script>
 
 <template>
@@ -101,4 +102,6 @@ const items = [
     <div class="pt-20 md:px-4 lg:px-20">
         <SingleVideo :data="items" />
     </div>
+
+    <UNotifications color="red" />
 </template>
