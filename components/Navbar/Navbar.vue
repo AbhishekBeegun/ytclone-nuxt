@@ -8,7 +8,7 @@ const handleSearch = () => {
 </script>
 
 <template>
-    <nav class="z-20 flex justify-between md:px-5 lg:px-16 py-4 fixed bg-white bg-transparent dark:bg-[#121212] dark:bg w-[100vw]">
+    <nav class="z-20 flex justify-between md:px-5 lg:px-16 py-4 fixed bg-white bg-transparent dark:bg-[#121212] w-[100vw]">
         <div class="flex gap-2 items-center">
             <Sidebar/>
             <NuxtLink to="/" class="">

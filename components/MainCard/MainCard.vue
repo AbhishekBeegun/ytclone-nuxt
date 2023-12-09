@@ -36,11 +36,11 @@ const formatDate = (dateString) => {
 
 <template>
     <div>
-        <NuxtLink :to="'/video/' + data.id.videoId">
+        <NuxtLink :to="`/video/${data.id.videoId}`">
             <div class="rounded-xl h-44 overflow-hidden">
-                <NuxtImg :src="data.snippet.thumbnails.high.url" class="w-full h-full rounded-xl object-cover hover:scale-110 transition-all ease-in-out" />
+                <NuxtImg :src="data.snippet.thumbnails.high.url" class="w-full h-full rounded-xl object-cover hover:scale-105 transition-all ease-in-out" />
             </div>
-            </NuxtLink>
+        </NuxtLink>
             
         <div class="flex gap-2 items-center pt-2">
             <UAvatar
@@ -52,8 +52,8 @@ const formatDate = (dateString) => {
             <p class="leading-tight font-semibold line-clamp-2">{{ data.snippet.title }}</p>
         </div>
 
-        <div class="py-2">
-            <p class="text-gray-700 dark:text-gray-300 text-sm ml-10">{{ data.snippet.channelTitle }}</p>
+        <div class="py-1">
+            <NuxtLink :to="`/channel/${data.snippet.channelId}`" class="text-gray-700 dark:text-gray-300 text-sm ml-10">{{ data.snippet.channelTitle }}</NuxtLink>
             <p class="text-gray-700 dark:text-gray-300 text-sm ml-10">282K views &#8226 <span>{{ formatDate(data.snippet.publishedAt) }}</span></p>
         </div>
     </div>
