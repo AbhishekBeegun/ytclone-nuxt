@@ -15,12 +15,12 @@ const {data} = props ;
         <div>
             <NuxtImg 
             class="rounded-full w-48 h-48"
-            :src="data[0].snippet.thumbnails.high.url" />
+            :src="data.snippet.thumbnails.high.url" />
         </div>
 
         <div>
-            <h1 class="text-5xl font-semibold">{{data[0].snippet.title}}</h1>
-            <p class="py-3 text-black dark:text-gray-400"><span class="pr-2">{{data[0].snippet.customUrl}}</span>&#8226;<span class="px-2">{{data[0].statistics.subscriberCount}} Subcribers</span> &#8226;<span class="px-2">{{data[0].statistics.videoCount}} Videos</span></p>
+            <h1 class="text-5xl font-semibold">{{data.snippet.title}}</h1>
+            <p class="py-3 text-black dark:text-gray-400"><span class="pr-2">{{data.snippet.customUrl}}</span>&#8226;<span class="px-2">{{data[0].statistics.subscriberCount}} Subcribers</span> &#8226;<span class="px-2">{{data[0].statistics.videoCount}} Videos</span></p>
 
             <p class="text-black dark:text-gray-400 pl-1 pb-3">{{data[0].snippet.description}}</p>
             
