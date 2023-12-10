@@ -4,7 +4,7 @@
     
         <div class="flex gap-2 items-center pt-2">
 
-            <USkeleton class="h-8 w-10 rounded-full" :ui="{background: 'bg-gray-300 dark:bg-gray-800'}"/>
+            <USkeleton class="h-8 w-9 rounded-full" :ui="{background: 'bg-gray-300 dark:bg-gray-800'}"/>
             <USkeleton class="h-4 w-full" :ui="{background: 'bg-gray-300 dark:bg-gray-800'}" />
            
         </div>

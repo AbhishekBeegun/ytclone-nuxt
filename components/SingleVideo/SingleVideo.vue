@@ -700,6 +700,19 @@ const SubscribeBtn = () => {
     <div class="w-3/4">
       <div class="md:h-[350px] lg:h-[500px] rounded-xl">
         <NuxtImg :src="data[0].snippet.thumbnails.maxres.url" class="w-full h-full object-cover rounded-lg" />
+
+        <!-- <iframe
+        class="rounded-lg"
+        width="100%"
+        height="100%"
+        :src="`https://www.youtube.com/embed/${data[0].id}?autoplay=1&mute=1`"  
+        title="YouTube Video"
+        frameborder="0"
+        allow="autoplay"
+        allowfullscreen
+      />
+       -->
+       
       </div>
 
       <div class="py-2">

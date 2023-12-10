@@ -43,8 +43,8 @@ const formatDate = (dateString) => {
 
             <div class="flex flex-col pl-2 lg:w-1/2">
                 <p class="font-medium lg:pb-1 line-clamp-2 ">{{data.snippet.title}}</p>
-                <p class="text-sm text-gray-300 lg:pb-1">{{data.snippet.channelTitle}}</p>
-                <p class="text-xs text-gray-300">282K views &#8226 <span>{{ formatDate(data.snippet.publishedAt) }}</span></p>
+                <p class="text-sm dark:text-gray-300 lg:pb-1">{{data.snippet.channelTitle}}</p>
+                <p class="text-xs dark:text-gray-300">282K views &#8226 <span>{{ formatDate(data.snippet.publishedAt) }}</span></p>
             </div>
         </div>
 
