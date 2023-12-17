@@ -31,7 +31,7 @@ const formatDate = (dateString) => {
     }
   }
 };
-
+console.log(data)
 </script>
 
 <template>

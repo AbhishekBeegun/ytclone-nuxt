@@ -1,4 +1,7 @@
 <script setup>
+const route = useRoute()
+
+import { RecommendedVideosQuery } from '../utils/RecommendedVideosQuery'
 
 const props = defineProps({
   data: {
@@ -7,24 +10,23 @@ const props = defineProps({
   },
 });
 
-const {data} = props ; 
+const { data } = props ; 
 
-const isFullScreen = ref(false);
+// const isFullScreen = ref(false);
 
-const toggleFullScreen = () => {
-  isFullScreen.value = !isFullScreen.value;
-};
+// const toggleFullScreen = () => {
+//   isFullScreen.value = !isFullScreen.value;
+// };
+// {{route.params.id}}
 
+ const queryfor = encodeURIComponent(route.params.id);
+ const { url, options } = RecommendedVideosQuery(queryfor);
 
-const suggestedvideo = useFetch('/api/suggestedvideos');
-
-
-const recommendedvideos = ref('')
-
-setTimeout(() => {
-  recommendedvideos.value = suggestedvideo.data._rawValue.items
-}, 5000);
-
+ const { data : suggestedvideo} = await useFetch(url , options);
+ // const suggestedvideo = useFetch('/api/suggestedvideos');
+ 
+ console.log(suggestedvideo._rawValue.items)
+    
 const formatNumber = (number) => {
   if (typeof number === 'number') {
     return number.toLocaleString('en-US'); 
@@ -45,7 +47,7 @@ const SubscribeBtn = () => {
 
     <div class="w-3/4">
       <div class="md:h-[350px] lg:h-[500px] rounded-xl">
-        <NuxtImg :src="data[0].snippet.thumbnails.maxres.url" class="w-full h-full object-cover rounded-xl" />
+        <NuxtImg :src="data.snippet.thumbnails.high.url" class="w-full h-full object-cover rounded-xl" />
 
         <!-- <iframe
         class="rounded-xl"
@@ -62,12 +64,12 @@ const SubscribeBtn = () => {
       </div>
 
       <div class="py-2">
-        <h2 class="text-xl font-semibold">{{data[0].snippet.title}}</h2>
+        <h2 class="text-xl font-semibold">{{data.snippet.title}}</h2>
         
         <div class="flex justify-between items-center py-1 pb-2">
 
           <div class="flex gap-4 items-center">
-            <NuxtLink :to="`/channel/${data[0].snippet.channelId}`" class="mt-1">
+            <NuxtLink :to="`/channel/${data.snippet.channelId}`" class="mt-1">
               <UAvatar
                 size="lg"
                 src="https://avatars.githubusercontent.com/u/739984?v=4"
@@ -75,8 +77,8 @@ const SubscribeBtn = () => {
               />
             </NuxtLink>
 
-            <NuxtLink :to="`/channel/${data[0].snippet.channelId}`" class="">
-              <p class="text-lg font-semibold">{{data[0].snippet.channelTitle}}</p>
+            <NuxtLink :to="`/channel/${data.snippet.channelId}`" class="">
+              <p class="text-lg font-semibold">{{data.snippet.channelTitle}}</p>
               <p class="text-xs text-gray-300">125K subscribers</p>
             </NuxtLink>
 
@@ -95,7 +97,7 @@ const SubscribeBtn = () => {
               <button class="flex item-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57l.03-.32c0-.41-.17-.79-.44-1.06L14.17 1L7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z"/></svg>
 
-                <span class="ml-2 font-semibold whitespace-nowrap"> {{ data[0].statistics.likeCount}}</span>
+                <span class="ml-2 font-semibold whitespace-nowrap"> {{ data.statistics.likeCount}}</span>
               </button>
 
               <button class="ml-4">
@@ -116,14 +118,14 @@ const SubscribeBtn = () => {
         </div>
 
         <div class="bg-gray-100 dark:bg-[#202326] h-32 rounded-xl py-2 px-4 overflow-scroll slider">
-          <p><span>{{data[0].statistics.viewCount}}</span> views 14 Jul 2022</p>
+          <p><span>{{data.statistics.viewCount}}</span> views 14 Jul 2022</p>
 
-          <div class="py-4 text-sm " v-html="data[0].snippet.description"></div>
+          <div class="py-4 text-sm " v-html="data.snippet.description"></div>
         </div>
 
 
         <div class="py-2">
-          <p class="text-xl font-bold">{{data[0].statistics.commentCount}} Comments</p>
+          <p class="text-xl font-bold">{{data.statistics.commentCount}} Comments</p>
 
           <p class="text-xs pt-10">Comments are expensive to call</p>
             
@@ -133,8 +135,8 @@ const SubscribeBtn = () => {
     </div>
       
     <div class="pl-4 w-1/4">
-      <div v-if="recommendedvideos">
-        <RecommendedVideos v-for="recommendedvideo of recommendedvideos" :data="recommendedvideo"/>       
+      <div v-if="suggestedvideo && suggestedvideo.length > 0">
+        <RecommendedVideos v-for="recommendedvideo of suggestedvideo._rawValue.items" :data="recommendedvideo"/>       
       </div>
 
       <div v-else class="flex flex-col gap-3">
@@ -144,7 +146,7 @@ const SubscribeBtn = () => {
   </div>
 </template>
 
-  <style scoped>
+<style scoped>
   .shadow-lg {
     box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
   }
@@ -155,5 +157,5 @@ const SubscribeBtn = () => {
   .slider::-webkit-scrollbar {
   display: none;
   }
-  </style>
+</style>
   

@@ -1,12 +1,17 @@
 <script setup>
 
-const { data } = await useFetch('/api/homedata');
+ import { SearchQuery } from '../utils/SearchQuery'
+ const queryfor = "bad%20bunny"
+ const { url, options } = SearchQuery(queryfor);
+
+const { data } = await useFetch(url , options);
+// const { data } = await useFetch("/api/homedata");
 
 const homeitems = ref('');
 
 setTimeout(() => {
-  homeitems.value = data._rawValue.items
-}, 5000);
+    homeitems.value = data._rawValue.items ;
+}, 1500);
 
 </script>
 
@@ -14,7 +19,7 @@ setTimeout(() => {
     <Navbar/>
     <div class="pt-20 md:px-4 lg:px-20"> 
         <HomeCategoSlider />
-        <div v-if="homeitems" class="grid grid-col-1 md:grid-cols-3 lg:grid-cols-4 gap-4 py-3">
+        <div v-if="homeitems && homeitems.length > 0" class="grid grid-col-1 md:grid-cols-3 lg:grid-cols-4 gap-4 py-3">
            <MainCard v-for="(item, index) in homeitems" :key="index" :data="item" /> 
         </div>
           

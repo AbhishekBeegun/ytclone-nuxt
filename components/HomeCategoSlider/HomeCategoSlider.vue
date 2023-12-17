@@ -27,20 +27,14 @@ export default {
     };
   },
 
-//   methods: {
-//     getCategoryLink(category) {
-//       return `/categories/${category.toLowerCase()}`;
-//     },
-//   },
 };
 </script>
 
 <template>
-    <div class="slider flex flex-nowrap overflow-scroll whitespace-nowrap gap-4">
-      <div 
-       class="px-3 bg-gray-200 dark:bg-[#3F3F3F] hover:bg-gray-300 dark:hover:!bg-gray-400 rounded-md py-1 transition-all ease-in-out " v-for="(category, index) in categories" :key="index">
-        <p class="font-medium text-sm mb-1">{{ category }}</p>
-      </div>
+    <div class="slider flex flex-nowrap overflow-x-scroll whitespace-nowrap gap-4">
+       <NuxtLink :to="`/search/${category}`" v-for="(category, index) in categories" :key="index">
+         <p class="font-medium text-sm mb-1 px-3 bg-gray-200 dark:bg-[#3F3F3F] hover:bg-gray-300 dark:hover:!bg-gray-400 rounded-md py-1 transition-all ease-in-out ">{{ category }}</p>
+       </NuxtLink>
     </div>
   </template>
 
